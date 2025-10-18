@@ -1,7 +1,10 @@
 package com.edu.Controller;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 public class HomeController {
@@ -12,12 +15,18 @@ public class HomeController {
     }
 
     @GetMapping("/health")
-    public String health() {
-        return "Application is running! ✅";
+    public ResponseEntity<Map<String, String>> health() {
+        Map<String, String> response = new HashMap<>();
+        response.put("status", "UP");
+        response.put("message", "Application is running! ✅");
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping("/api/status")
-    public String status() {
-        return "{\"status\":\"UP\",\"message\":\"Education Management System is running successfully\"}";
+    public ResponseEntity<Map<String, String>> status() {
+        Map<String, String> response = new HashMap<>();
+        response.put("status", "UP");
+        response.put("message", "Education Management System is running successfully");
+        return ResponseEntity.ok(response);
     }
 }
